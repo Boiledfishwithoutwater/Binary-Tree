@@ -1,0 +1,150 @@
+package zuoyeSJJG;
+
+import java.util.Scanner;
+
+public class erchashu 
+{
+	int data;
+	erchashu lchild;
+	erchashu rchild;
+	public erchashu()
+	{
+		this.data=0;
+		this.lchild=null;
+		this.rchild=null;
+	}
+	public erchashu(int num)
+	{
+		this.data=num;
+		this.lchild=null;
+		this.rchild=null;
+	}
+	public static erchashu jianli(Scanner reader)
+	{
+		erchashu root=null;
+		int num=reader.nextInt();
+		if(num>0)
+		{
+			root=new erchashu(num);
+			root.lchild=jianli(reader);
+			root.rchild=jianli(reader);
+		}
+		return root;
+	}
+	public static void before1(erchashu root)
+	{
+		if(root==null)
+			return;
+		erchashu t=root;
+		ArrayStack3<erchashu> stack=new ArrayStack3<erchashu>();
+		while(t!=null)
+		{
+			System.out.println(t.data);
+			stack.push(t);
+			t=t.lchild;
+		}
+		while(!stack.isEmpty())
+		{
+			t=stack.pop();
+			if(t.rchild!=null)
+			{
+				t=t.rchild;
+				while(t!=null)
+				{
+					System.out.println(t.data);
+					stack.push(t);
+					t=t.lchild;
+				}
+			}
+		}
+	}
+	public static void before2(erchashu root)
+	{
+		if(root==null)
+			return;
+		ArrayStack3<erchashu> stack=new ArrayStack3<erchashu>();
+		stack.push(root);
+		{
+			while(!stack.isEmpty())
+			{
+				root=stack.pop();
+				System.out.println(root.data);
+				if(root.rchild!=null)
+					stack.push(root.rchild);
+				if(root.lchild!=null)
+					stack.push(root.lchild);
+			}
+		}
+	}
+	public static void mid1(erchashu root)
+	{
+		if(root==null)
+			return;
+		erchashu t=root;
+		ArrayStack3<erchashu> stack=new ArrayStack3<erchashu>();
+		while(t!=null)
+		{
+			stack.push(t);
+			t=t.lchild;
+		}
+		while(!stack.isEmpty())
+		{
+			t=stack.pop();
+			System.out.println(t.data);
+			if(t.rchild!=null)
+			{
+				t=t.rchild;
+				while(t!=null)
+				{
+					stack.push(t);
+					t=t.lchild;
+				}
+			}
+		}
+	}
+
+	public static void after1(erchashu root)
+	{
+		if(root==null)
+			return;
+		erchashu t=root;
+		ArrayStack3<erchashu> stack=new ArrayStack3<erchashu>();
+		while(t!=null)
+		{
+			System.out.println(t.data);
+			stack.push(t);
+			t=t.rchild;
+		}
+		while(!stack.isEmpty())
+		{
+			t=stack.pop();
+			if(t.lchild!=null)
+			{
+				t=t.lchild;
+				while(t!=null)
+				{
+					System.out.println(t.data);
+					stack.push(t);
+					t=t.rchild;
+				}
+			}
+		}
+	}
+	public static void after2(erchashu root)
+	{
+		if(root==null)
+			return;
+		ArrayStack3<erchashu> stack=new ArrayStack3<erchashu>();
+		stack.push(root);
+		while(!stack.isEmpty())
+		{
+			root=stack.pop();
+			System.out.println(root.data);
+			if(root.lchild!=null)
+				stack.push(root.lchild);
+			if(root.rchild!=null)
+				stack.push(root.rchild);
+		}
+	}
+
+}
