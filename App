@@ -1,0 +1,16 @@
+public class App {//1 2 0 3 4 0 0 6 0 0 5 0 0
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner reader=new Scanner(System.in);
+		erchashu root=erchashu.jianli(reader);
+		//erchashu.qianxu1(root);
+		//erchashu.zhongxu1(root);
+		//erchashu.houxu1(root);
+		erchashu.qianxu2(root);
+		//erchashu.zhongxu2(root);
+		//erchashu.houxu2(root);
+
+	}
+
+}
